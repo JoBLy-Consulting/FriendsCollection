@@ -4,7 +4,7 @@
 //
 //  Created by Johan Guenaoui on 02/10/2020.
 //
-//  Goal: This view is the edit form to enter new character in the list.
+//  Goal: This view is the edit form to enter new characters in the list.
 
 import SwiftUI
 

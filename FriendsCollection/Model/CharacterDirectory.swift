@@ -4,7 +4,7 @@
 //
 //  Created by Johan Guenaoui on 01/10/2020.
 //
-//  Goal: This class will manage the charcater directory and the new characters
+//  Goal: This class will manages the charcaters directory and the new characters
 
 import Foundation
 import Combine
@@ -17,7 +17,7 @@ class CharacterDirectory: ObservableObject {
     
     public init() {
         _charactersList = DataConnector.loadCharacters()
-        _maxId = 8
+        _maxId = 18
     }
     
     public func getCharacters() -> [Character]{

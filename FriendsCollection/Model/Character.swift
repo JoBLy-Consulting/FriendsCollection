@@ -4,7 +4,7 @@
 //
 //  Created by Johan Guenaoui on 01/10/2020.
 //
-//  Goal: This struct is a the Model that describe the characters properties
+//  Goal: This struct is the Model that describes the characters properties
 
 import Foundation
 
