@@ -15,3 +15,9 @@ struct FriendsCollectionApp: App {
         }
     }
 }
+
+struct FriendsCollectionApp_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

@@ -58,6 +58,7 @@ struct CharacterEditForm: View {
                         self._presentationMode.wrappedValue.dismiss()
                 }){
                     Text("Add")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
                 }
                 
             }

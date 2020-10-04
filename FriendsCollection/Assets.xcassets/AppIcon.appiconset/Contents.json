@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon-40.png",
+      "filename" : "notification-icon@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
@@ -69,11 +69,13 @@
       "size" : "29x29"
     },
     {
+      "filename" : "icon-40.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
+      "filename" : "icon-40@2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
@@ -97,6 +99,7 @@
       "size" : "83.5x83.5"
     },
     {
+      "filename" : "ios-marketing.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

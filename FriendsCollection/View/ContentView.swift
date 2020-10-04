@@ -11,7 +11,6 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject private var _friendsCollection = CharacterDirectory()
     @State private var _showEditForm:Bool = false
-    @State private var _friendsList:[Character] = []
     
     var body: some View {
         VStack {
@@ -35,18 +34,8 @@ struct ContentView: View {
                     CharacterPresenter(content:value)
                     Spacer()
                 }
-                .onAppear(perform: {
-                    reload()
-                })
-                .onReceive(_friendsCollection.objectWillChange, perform: { _ in
-                    reload()
-                })
             }
         }
-    }
-
-    private func reload() {
-        _friendsList = _friendsCollection.getCharacters()
     }
 }
 
