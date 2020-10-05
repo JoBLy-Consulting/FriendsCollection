@@ -53,6 +53,6 @@ struct CharacterPresenter: View {
             }
         }
         .frame(height: 150)
-        .listRowBackground(_color)
+        .background(_color)
     }
 }

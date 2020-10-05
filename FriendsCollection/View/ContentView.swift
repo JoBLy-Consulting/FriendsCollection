@@ -11,6 +11,9 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject private var _friendsCollection = CharacterDirectory()
     @State private var _showEditForm:Bool = false
+    var _friendsGrid: [GridItem] = [
+        GridItem(.adaptive(minimum: 500))
+    ]
     
     var body: some View {
         VStack {
@@ -29,11 +32,12 @@ struct ContentView: View {
                     CharacterEditForm(_characterDirectory: _friendsCollection)
                 }
             }.padding()
-            List{
-                ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
-                    CharacterPresenter(content:value)
-                    Spacer()
-                }
+            ScrollView {
+                LazyVGrid(columns: _friendsGrid) {
+                    ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
+                        CharacterPresenter(content:value)
+                    }
+                }.padding(.all, 10)
             }
         }
     }
