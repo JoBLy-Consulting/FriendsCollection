@@ -17,8 +17,9 @@
 		E6D59FF425260E8900054C51 /* FriendsCollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D59FF325260E8900054C51 /* FriendsCollectionUITests.swift */; };
 		E6D5A00625260ECC00054C51 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5A00525260ECC00054C51 /* Character.swift */; };
 		E6D5A00E25260FBA00054C51 /* CharacterDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5A00D25260FBA00054C51 /* CharacterDirectory.swift */; };
-		E6D5A0202526213700054C51 /* FriendsCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D5A01F2526213700054C51 /* FriendsCharacters.json */; };
 		E6D5A025252621D400054C51 /* DataConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5A024252621D400054C51 /* DataConnector.swift */; };
+		E6F558D0252B510A00C1E6DE /* FriendsCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = E6F558CF252B510A00C1E6DE /* FriendsCharacters.json */; };
+		E6F558D8252B514000C1E6DE /* FriendsCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = E6F558D7252B514000C1E6DE /* FriendsCharacters.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,9 @@
 		E6D59FF525260E8900054C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6D5A00525260ECC00054C51 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		E6D5A00D25260FBA00054C51 /* CharacterDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDirectory.swift; sourceTree = "<group>"; };
-		E6D5A01F2526213700054C51 /* FriendsCharacters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendsCharacters.json; sourceTree = "<group>"; };
 		E6D5A024252621D400054C51 /* DataConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConnector.swift; sourceTree = "<group>"; };
+		E6F558CF252B510A00C1E6DE /* FriendsCharacters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendsCharacters.json; sourceTree = "<group>"; };
+		E6F558D7252B514000C1E6DE /* FriendsCharacters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FriendsCharacters.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +185,8 @@
 		E6D5A018252613FA00054C51 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				E6D5A01F2526213700054C51 /* FriendsCharacters.json */,
+				E6F558D7252B514000C1E6DE /* FriendsCharacters.json */,
+				E6F558CF252B510A00C1E6DE /* FriendsCharacters.json */,
 			);
 			name = Config;
 			path = "New Group";
@@ -293,8 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6D59FDE25260E8800054C51 /* Preview Assets.xcassets in Resources */,
+				E6F558D8252B514000C1E6DE /* FriendsCharacters.json in Resources */,
+				E6F558D0252B510A00C1E6DE /* FriendsCharacters.json in Resources */,
 				E6D59FDB25260E8800054C51 /* Assets.xcassets in Resources */,
-				E6D5A0202526213700054C51 /* FriendsCharacters.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ struct ContentView: View {
     @ObservedObject private var _friendsCollection = CharacterDirectory()
     @State private var _showEditForm:Bool = false
     var _friendsGrid: [GridItem] = [
-        GridItem(.adaptive(minimum: 500))
+        GridItem(.adaptive(minimum: 350))
     ]
     
     var body: some View {
@@ -38,6 +38,7 @@ struct ContentView: View {
                         CharacterPresenter(content:value)
                     }
                 }
+                .padding(.all, 10)
             }
         }
     }
