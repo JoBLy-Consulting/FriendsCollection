@@ -32,7 +32,6 @@ struct ContentView: View {
             List{
                 ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
                     CharacterPresenter(content:value)
-                    Spacer()
                 }
             }
         }
