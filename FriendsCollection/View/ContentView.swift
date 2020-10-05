@@ -37,7 +37,7 @@ struct ContentView: View {
                     ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
                         CharacterPresenter(content:value)
                     }
-                }.padding(.all, 10)
+                }
             }
         }
     }
