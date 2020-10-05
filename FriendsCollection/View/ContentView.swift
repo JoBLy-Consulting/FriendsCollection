@@ -32,8 +32,10 @@ struct ContentView: View {
             List{
                 ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
                     CharacterPresenter(content:value)
+                        .frame(maxWidth: .infinity)
                 }
             }
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
     }
 }
