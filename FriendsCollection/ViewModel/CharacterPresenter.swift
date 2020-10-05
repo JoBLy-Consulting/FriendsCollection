@@ -52,7 +52,8 @@ struct CharacterPresenter: View {
                     .truncationMode(.head)
             }
         }
+        .padding(.all, 10)
         .frame(height: 150)
-        .listRowBackground(_color)
+        .background(_color)
     }
 }
