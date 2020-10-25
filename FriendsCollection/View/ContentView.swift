@@ -8,33 +8,86 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SideBar: View {
+    var body: some View {
+        List {
+            NavigationLink(destination: MainContent(_season: 0, _mainCharacters: 0).navigationTitle("All Characters")) {
+                Label("All Characters", systemImage: "person.3")
+            }
+            Section(header:Text("Seasons")) {
+                ForEach(1...10, id:\.self) {number in
+                    NavigationLink(destination: MainContent(_season: number, _mainCharacters: 0).navigationTitle("Season \(number)")) {
+                        Label("Season \(number)", systemImage: "tv")
+                    }
+                }
+            }
+            Section(header:Text("Type")) {
+                NavigationLink(destination: MainContent(_season: -1, _mainCharacters: 1).navigationTitle("Main Characters")) {
+                    Label("Main", systemImage: "star.circle.fill")
+                }
+                NavigationLink(destination: MainContent(_season: -1, _mainCharacters: 2).navigationTitle("Guest")) {
+                    Label("Guests", systemImage: "info.circle.fill")
+                }
+            }
+        }
+        .listStyle(SidebarListStyle())
+    }
+}
+
+struct MainContent: View {
     @ObservedObject private var _friendsCollection = CharacterDirectory()
     @State private var _showEditForm:Bool = false
+    var _friendsGrid:[GridItem] = [
+        GridItem(.adaptive(minimum: 320))
+    ]
+    let _season:Int
+    let _mainCharacters:Int
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Friends Collection")
-                    .font(.system(.title))
-                    .bold()
-                Spacer()
-                Button(action: {
-                    self._showEditForm = true
-                }) {
-                    Image(systemName: "plus.circle")
-                }
-                .font(.system(size:32))
-                .sheet(isPresented: self.$_showEditForm) {
-                    CharacterEditForm(_characterDirectory: _friendsCollection)
-                }
-            }.padding()
-            List{
-                ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
-                    CharacterPresenter(content:value)
-                        .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                }
+            ScrollView {
+                LazyVGrid(columns: _friendsGrid){
+                    ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
+                            if _season == 0 {
+                                CharacterPresenter(content:value)
+                            } else {
+                                switch _season {
+                                case -1:
+                                    if _mainCharacters == 1 && value._isMain {
+                                        CharacterPresenter(content:value)
+                                    }
+                                    if _mainCharacters == 2 && !value._isMain {
+                                        CharacterPresenter(content:value)
+                                    }
+                                default:
+                                    if _season == value._season {
+                                        CharacterPresenter(content:value)
+                                    }
+                                }
+                                
+                            }
+                        }
+                }.padding(.all, 10)
             }
+        }
+        .navigationBarItems(trailing: Button(action: {
+            self._showEditForm = true
+        }) {
+            Image(systemName: "plus.circle")
+        }
+        .font(.system(size:32))
+        .sheet(isPresented: self.$_showEditForm) {
+            CharacterEditForm(_characterDirectory: _friendsCollection)
+        })
+    }
+}
+
+struct ContentView: View {
+    
+    var body: some View {
+        NavigationView {
+            SideBar().navigationTitle("Friends Collection")
+            MainContent(_season: 0, _mainCharacters: 0).navigationTitle("All Characters")
         }
     }
 }
