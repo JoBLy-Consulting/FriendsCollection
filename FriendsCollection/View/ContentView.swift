@@ -48,23 +48,19 @@ struct MainContent: View {
             ScrollView {
                 LazyVGrid(columns: _friendsGrid){
                     ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
-                            if _season == 0 {
-                                CharacterPresenter(content:value)
-                            } else {
-                                switch _season {
-                                case -1:
-                                    if _mainCharacters == 1 && value._isMain {
-                                        CharacterPresenter(content:value)
-                                    }
-                                    if _mainCharacters == 2 && !value._isMain {
-                                        CharacterPresenter(content:value)
-                                    }
-                                default:
-                                    if _season == value._season {
-                                        CharacterPresenter(content:value)
-                                    }
+                            switch _season {
+                            case 0: CharacterPresenter(content:value)
+                            case -1:
+                                if _mainCharacters == 1 && value._isMain {
+                                    CharacterPresenter(content:value)
                                 }
-                                
+                                if _mainCharacters == 2 && !value._isMain {
+                                    CharacterPresenter(content:value)
+                                }
+                            default:
+                                if _season == value._season {
+                                    CharacterPresenter(content:value)
+                                }
                             }
                         }
                 }.padding(.all, 10)
