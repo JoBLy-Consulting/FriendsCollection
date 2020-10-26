@@ -44,27 +44,25 @@ struct MainContent: View {
     let _mainCharacters:Int
     
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVGrid(columns: _friendsGrid){
-                    ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
-                            switch _season {
-                            case 0: CharacterPresenter(content:value)
-                            case -1:
-                                if _mainCharacters == 1 && value._isMain {
-                                    CharacterPresenter(content:value)
-                                }
-                                if _mainCharacters == 2 && !value._isMain {
-                                    CharacterPresenter(content:value)
-                                }
-                            default:
-                                if _season == value._season {
-                                    CharacterPresenter(content:value)
-                                }
-                            }
+        ScrollView {
+            LazyVGrid(columns: _friendsGrid){
+                ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
+                    switch _season {
+                    case 0: CharacterPresenter(content:value)
+                    case -1:
+                        if _mainCharacters == 1 && value._isMain {
+                            CharacterPresenter(content:value)
                         }
-                }.padding(.all, 10)
-            }
+                        if _mainCharacters == 2 && !value._isMain {
+                            CharacterPresenter(content:value)
+                        }
+                    default:
+                        if _season == value._season {
+                            CharacterPresenter(content:value)
+                        }
+                    }
+                }
+            }.padding(.all, 10)
         }
         .navigationBarItems(trailing: Button(action: {
             self._showEditForm = true
