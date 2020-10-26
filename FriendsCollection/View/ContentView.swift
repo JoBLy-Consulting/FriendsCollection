@@ -35,6 +35,7 @@ struct SideBar: View {
 }
 
 struct MainContent: View {
+    @Environment(\.horizontalSizeClass) var _horizontalSizeClass
     @ObservedObject private var _friendsCollection = CharacterDirectory()
     @State private var _showEditForm:Bool = false
     var _friendsGrid:[GridItem] = [
@@ -44,10 +45,56 @@ struct MainContent: View {
     let _mainCharacters:Int
     
     var body: some View {
-        VStack {
+        if _horizontalSizeClass == .regular {
             ScrollView {
+                GeometryReader { geometry in
+                    Image("AllCast-clear")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .offset(y: geometry.frame(in: .global).minY/5)
+                        .clipped()
+                }
+                .frame(height: 250)
                 LazyVGrid(columns: _friendsGrid){
                     ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
+                        switch _season {
+                        case 0: CharacterPresenter(content:value)
+                        case -1:
+                            if _mainCharacters == 1 && value._isMain {
+                                CharacterPresenter(content:value)
+                            }
+                            if _mainCharacters == 2 && !value._isMain {
+                                CharacterPresenter(content:value)
+                            }
+                        default:
+                            if _season == value._season {
+                                CharacterPresenter(content:value)
+                            }
+                        }
+                    }
+                }.padding(.all, 10)
+            }
+            .edgesIgnoringSafeArea(.top)
+            .navigationBarItems(trailing: Button(action: {
+                self._showEditForm = true
+            }) {
+                Image(systemName: "plus.circle")
+            }
+            .font(.system(size:32))
+            .sheet(isPresented: self.$_showEditForm) {
+                CharacterEditForm(_characterDirectory: _friendsCollection)
+            })
+        } else {
+            VStack {
+                ScrollView {
+                    Image("AllCast")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 250)
+                        .padding(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    LazyVGrid(columns: _friendsGrid){
+                        ForEach(_friendsCollection.getCharacters(), id: \._id) {value in
                             switch _season {
                             case 0: CharacterPresenter(content:value)
                             case -1:
@@ -63,18 +110,19 @@ struct MainContent: View {
                                 }
                             }
                         }
-                }.padding(.all, 10)
+                    }.padding(.all, 10)
+                }
             }
+            .navigationBarItems(trailing: Button(action: {
+                self._showEditForm = true
+            }) {
+                Image(systemName: "plus.circle")
+            }
+            .font(.system(size:32))
+            .sheet(isPresented: self.$_showEditForm) {
+                CharacterEditForm(_characterDirectory: _friendsCollection)
+            })
         }
-        .navigationBarItems(trailing: Button(action: {
-            self._showEditForm = true
-        }) {
-            Image(systemName: "plus.circle")
-        }
-        .font(.system(size:32))
-        .sheet(isPresented: self.$_showEditForm) {
-            CharacterEditForm(_characterDirectory: _friendsCollection)
-        })
     }
 }
 
