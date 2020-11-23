@@ -185,8 +185,7 @@
 			children = (
 				E6D5A01F2526213700054C51 /* FriendsCharacters.json */,
 			);
-			name = Config;
-			path = "New Group";
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
